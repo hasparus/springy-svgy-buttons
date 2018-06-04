@@ -35,7 +35,9 @@ const Ripple = ({ x, y, handleRest }: RippleProps) => (
   </Spring>
 );
 
-export type RippleButtonProps = {};
+export type RippleButtonProps = {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 export type RippleButtonState = {
   ripples: Array<Vector2<number | string> & { key: any }>;
 };
@@ -80,7 +82,7 @@ export default class RippleButton extends React.Component<
   private _handleClick = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    const { svgElement } = this;
+    const { svgElement, props } = this;
     let x: number | string = event.clientX;
     let y: number | string = event.clientY;
     if (x === 0 && y === 0) {
@@ -97,6 +99,10 @@ export default class RippleButton extends React.Component<
       // tslint:disable-next-line:no-increment-decrement
       ripples: [...ripples, { x, y, key: this.rippleKey++ }],
     }));
+
+    if (props.onClick) {
+      props.onClick(event);
+    }
   };
 
   private _destroyHead = () => {

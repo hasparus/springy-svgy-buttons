@@ -22,7 +22,9 @@ const ButtonUnderlay = styled.div`
   clip-path: url(#${({ clipPathId }: { clipPathId: string }) => clipPathId});
 `;
 
-export type ButtonWithHoverCircleProps = {};
+export type ButtonWithHoverCircleProps = {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 export type ButtonWithHoverCircleState = {
   isActive: boolean;
   position: Vector2<number>;
@@ -97,6 +99,10 @@ export default class ButtonWithHoverCircle extends React.Component<
   ) => {
     this._moveCircle(event.clientX, event.clientY);
     this.setState(({ isActive }) => ({ isActive: !isActive }));
+
+    if (this.props.onClick) {
+      this.props.onClick(event);
+    }
   };
 
   private _handleMouseMove = (event: MouseEvent) => {
