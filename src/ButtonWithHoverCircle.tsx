@@ -3,7 +3,7 @@ import { Spring } from 'react-spring';
 import styled from 'styled-components';
 
 import Button, {
-  COLORS,
+  Colors,
   KeyboardFocusableButtonState,
 } from './Button';
 import { Vector2 } from './common_types';
@@ -13,8 +13,8 @@ let CLIP_PATH_COUNTER = 0;
 
 const ButtonUnderlay = styled.div`
   position: absolute;
-  background: ${COLORS.deepBlue};
-  color: ${COLORS.yellow};
+  background: ${Colors.DeepBlue};
+  color: ${Colors.Yellow};
   padding: 1rem;
   left: 0;
   top: 0;

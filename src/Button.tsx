@@ -8,11 +8,11 @@ export type InnerRef =
   | ((instance: any) => void)
   | React.RefObject<HTMLElement | SVGElement | React.Component>;
 
-export const enum COLORS {
-  blue = '#2979FF',
-  lightBlue = '#3d8aff',
-  deepBlue = '#2962FF',
-  yellow = '#FFBE0B',
+export const enum Colors {
+  Blue = '#2979FF',
+  LightBlue = '#3d8aff',
+  DeepBlue = '#2962FF',
+  Yellow = '#FFBE0B',
 }
 
 export type BaseStyledButtonProps = {
@@ -29,7 +29,7 @@ const BaseStyledButton = styled.button`
   color: white;
   padding: 1rem;
   border-radius: 3px;
-  background: ${COLORS.blue};
+  background: ${Colors.Blue};
 
   & > svg {
     position: absolute;
@@ -44,7 +44,7 @@ const BaseStyledButton = styled.button`
   ${(props: BaseStyledButtonProps) =>
     props.keyboardFocused
       ? css`
-          background: ${COLORS.lightBlue};
+          background: ${Colors.LightBlue};
         `
       : ''};
 `;

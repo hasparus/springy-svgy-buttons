@@ -2,13 +2,13 @@ import React from 'react';
 import { animated, Spring } from 'react-spring';
 import styled from 'styled-components';
 
-import Button, { COLORS } from './Button';
+import Button, { Colors } from './Button';
 import { Vector2 } from './common_types';
 import { makeSvgPointPosition } from './utils';
 
 const StyledRippleButton = styled(Button)`
   &:hover {
-    background: ${COLORS.lightBlue};
+    background: ${Colors.LightBlue};
   }
 
   & > svg {
