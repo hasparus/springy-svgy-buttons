@@ -11,6 +11,9 @@ import { getCenter, makeSvgPointPosition } from './utils';
 
 let CLIP_PATH_COUNTER = 0;
 
+const immediateFilter = (name: string) =>
+  name === 'x' || name === 'y';
+
 const ButtonUnderlay = styled.div`
   position: absolute;
   background: ${Colors.DeepBlue};
@@ -70,7 +73,7 @@ export default class ButtonWithHoverCircle extends React.Component<
             <Spring
               config={{ tension: 180, friction: 12 }}
               from={{ radius: isActive ? 15 : 150, x: 0, y: 0 }}
-              immediate={isActive ? ['x', 'y'] : false}
+              immediate={isActive ? immediateFilter : false}
               to={{
                 radius: isActive ? 150 : 15,
                 x: position.x,

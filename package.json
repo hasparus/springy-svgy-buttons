@@ -1,5 +1,5 @@
 {
-  "name": "springy-svgy-buttons",
+  "name": "@hasparus/springy-svgy-buttons",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
@@ -19,6 +19,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "example:dev": "parcel ./example/src/index.html --out-dir ./example/dist",
+    "example:build": "rm ./example/dist/* && parcel build ./example/src/index.html --out-dir ./example/dist",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
@@ -85,8 +87,10 @@
     "jest": "^22.0.2",
     "lint-staged": "^7.0.0",
     "lodash.camelcase": "^4.3.0",
+    "parcel-bundler": "^1.8.1",
     "prettier": "^1.4.4",
     "prompt": "^1.0.0",
+    "react-dom": "^16.4.0",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.58.0",
