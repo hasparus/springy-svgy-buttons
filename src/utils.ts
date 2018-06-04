@@ -15,7 +15,7 @@ export function makeSvgPointPosition(
 
 export function getCenter(
   htmlElement: HTMLElement | SVGElement
-): Vector2 {
+): Vector2<number> {
   const {
     left: rx,
     top: ry,
