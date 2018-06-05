@@ -2,15 +2,12 @@ import * as React from 'react';
 // tslint:disable-next-line:no-implicit-dependencies
 import { render } from 'react-dom';
 
-// tslint:disable-next-line:no-console
-console.log(':)');
-
 import './styles.css';
 
 import {
   ButtonWithHoverCircle,
   RippleButton,
-} from '../../src/springy-svgy-buttons';
+} from '../../dist/springy-svgy-buttons.es5';
 
 const App = () => (
   <main>

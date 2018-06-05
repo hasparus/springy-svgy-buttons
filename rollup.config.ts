@@ -1,23 +1,27 @@
 // tslint:disable no-implicit-dependencies
-import camelCase from 'lodash.camelcase'
-import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
-import resolve from 'rollup-plugin-node-resolve'
-import sourceMaps from 'rollup-plugin-sourcemaps'
-import typescript from 'rollup-plugin-typescript2'
+import camelCase from 'lodash.camelcase';
+import commonjs from 'rollup-plugin-commonjs';
+import json from 'rollup-plugin-json';
+import resolve from 'rollup-plugin-node-resolve';
+import sourceMaps from 'rollup-plugin-sourcemaps';
+import typescript from 'rollup-plugin-typescript2';
 
 // tslint:disable-next-line no-var-requires
-const pkg = require('./package.json')
+const pkg = require('./package.json');
 
-const libraryName = 'springy-svgy-buttons'
+const libraryName = 'springy-svgy-buttons';
 
 export default {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: ['react', 'styled-components', 'react-spring'],
   input: `src/${libraryName}.ts`,
   output: [
-    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true }
+    {
+      file: pkg.main,
+      format: 'umd',
+      name: camelCase(libraryName),
+      sourcemap: true,
+    },
+    { file: pkg.module, format: 'es', sourcemap: true },
   ],
   plugins: [
     // Allow json resolution
@@ -32,9 +36,9 @@ export default {
     resolve(),
 
     // Resolve source maps to the original source
-    sourceMaps()
+    sourceMaps(),
   ],
   watch: {
-    include: 'src/**'
-  }
-}
+    include: 'src/**',
+  },
+};
