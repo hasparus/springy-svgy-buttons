@@ -13,6 +13,7 @@ const libraryName = 'springy-svgy-buttons';
 
 export default {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
+  external: ['react', 'styled-components', 'react-spring'],
   input: `src/${libraryName}.ts`,
   output: [
     {
