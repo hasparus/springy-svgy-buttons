@@ -20,7 +20,8 @@
   },
   "scripts": {
     "example:dev": "parcel ./example/src/index.html --out-dir ./example/dist",
-    "example:build": "rm ./example/dist/* && parcel build ./example/src/index.html --out-dir ./example/dist",
+    "example:build": "rm ./example/dist/* && parcel build ./example/src/index.html --out-dir ./example/dist --public-url ./",
+    "example:deploy": "ts-node tools/gh-pages-publish",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
@@ -78,6 +79,7 @@
     "@types/jest": "^22.0.0",
     "@types/node": "^10.0.3",
     "@types/react": "^16.3.16",
+    "@types/react-dom": "^16.0.6",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
     "cross-env": "^5.0.1",
