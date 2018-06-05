@@ -20,7 +20,7 @@
   },
   "scripts": {
     "example:dev": "parcel ./example/src/index.html --out-dir ./example/dist",
-    "example:build": "rm ./example/dist/* && parcel build ./example/src/index.html --out-dir ./example/dist --public-url ./",
+    "example:build": "rm ./example/dist/*; parcel build ./example/src/index.html --out-dir ./example/dist --public-url ./",
     "example:deploy": "ts-node tools/gh-pages-publish",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
