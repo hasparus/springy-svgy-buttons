@@ -7,7 +7,7 @@ import './styles.css';
 import {
   ButtonWithHoverCircle,
   RippleButton,
-} from '../../dist/springy-svgy-buttons.es5';
+} from '../../src/springy-svgy-buttons';
 
 const App = () => (
   <main>
