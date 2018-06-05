@@ -2,7 +2,7 @@
 
 Two funny buttons I made to try [react-spring](https://github.com/drcmda/react-spring).
 
-You can see them [here on github pages](https://hasparus.github.io/springy-svgy-buttons/);
+You can see them [here on github pages](https://hasparus.github.io/springy-svgy-buttons/).
 
 ## Credits
 
