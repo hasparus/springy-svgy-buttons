@@ -36,6 +36,9 @@
     "prepush": "npm run test:prod && npm run build",
     "commitmsg": "validate-commit-msg"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --write",
