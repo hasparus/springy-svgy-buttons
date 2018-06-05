@@ -2,13 +2,16 @@ import React from 'react';
 import { animated, Spring } from 'react-spring';
 import styled from 'styled-components';
 
-import Button, { Colors } from './Button';
+import Button, { BackgroundColors, Colors } from './Button';
 import { Vector2 } from './common_types';
 import { makeSvgPointPosition } from './utils';
 
 const StyledRippleButton = styled(Button)`
   &:hover {
-    background: ${Colors.LightBlue};
+    background: ${props =>
+      props.backgroundColor
+        ? props.backgroundColor.focused
+        : Colors.LightBlue};
   }
 
   & > svg {
@@ -37,6 +40,7 @@ const Ripple = ({ x, y, handleRest }: RippleProps) => (
 
 export type RippleButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  backgroundColor?: BackgroundColors;
 };
 export type RippleButtonState = {
   ripples: Array<Vector2<number | string> & { key: any }>;
@@ -54,10 +58,11 @@ export default class RippleButton extends React.Component<
   private buttonElement: HTMLButtonElement | null = null;
 
   public render() {
-    const { children } = this.props;
+    const { children, backgroundColor } = this.props;
     const { ripples } = this.state;
     return (
       <StyledRippleButton
+        backgroundColor={backgroundColor}
         onClick={this._handleClick}
         innerRef={this.buttonRef}
       >

@@ -15,6 +15,11 @@ export const enum Colors {
   Yellow = '#FFBE0B',
 }
 
+export type BackgroundColors = {
+  focused: string;
+  normal: string;
+};
+
 export type BaseStyledButtonProps = {
   keyboardFocused: boolean;
   onBlur: React.FocusEventHandler<HTMLButtonElement>;
@@ -23,13 +28,14 @@ export type BaseStyledButtonProps = {
   onMouseDown: React.MouseEventHandler<HTMLButtonElement>;
   onMouseLeave: React.MouseEventHandler<HTMLButtonElement>;
   innerRef?: InnerRef;
+  backgroundColor: BackgroundColors;
 };
 const BaseStyledButton = styled.button`
   ${stylesReset} position: relative;
   color: white;
   padding: 1rem;
   border-radius: 3px;
-  background: ${Colors.Blue};
+  background: ${props => props.backgroundColor.normal};
 
   & > svg {
     position: absolute;
@@ -44,15 +50,19 @@ const BaseStyledButton = styled.button`
   ${(props: BaseStyledButtonProps) =>
     props.keyboardFocused
       ? css`
-          background: ${Colors.LightBlue};
+          background: ${props.backgroundColor.focused};
         `
       : ''};
 `;
 
+export type DefaultProps = {
+  backgroundColor: BackgroundColors;
+};
 export type KeyboardFocusableButtonProps = {
+  children: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   innerRef?: InnerRef;
-};
+} & Partial<DefaultProps>;
 export type KeyboardFocusableButtonState = {
   keyboardFocused: boolean;
 };
@@ -60,6 +70,13 @@ export default class KeyboardFocusableButton extends React.Component<
   KeyboardFocusableButtonProps,
   KeyboardFocusableButtonState
 > {
+  public static defaultProps = {
+    backgroundColor: {
+      focused: Colors.LightBlue,
+      normal: Colors.Blue,
+    },
+  };
+
   public state = {
     keyboardFocused: false,
   };
@@ -67,7 +84,8 @@ export default class KeyboardFocusableButton extends React.Component<
   private mouseDown = false;
 
   public render() {
-    const { children, ...rest } = this.props;
+    const { children, ...rest } = this
+      .props as KeyboardFocusableButtonProps & DefaultProps;
     const { keyboardFocused } = this.state;
 
     return (

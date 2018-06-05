@@ -11,7 +11,14 @@ import {
 
 const App = () => (
   <main>
-    <RippleButton>Just click it</RippleButton>
+    <RippleButton
+      backgroundColor={{
+        focused: '#575fcf',
+        normal: '#3c40c6',
+      }}
+    >
+      Just click it
+    </RippleButton>
     <ButtonWithHoverCircle>Hover here</ButtonWithHoverCircle>
   </main>
 );
